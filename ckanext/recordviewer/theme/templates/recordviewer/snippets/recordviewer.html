@@ -38,7 +38,8 @@
  {% set url = h.url_for(controller='ckanext.recordviewer.controller.RVController', action='recordurl', package_name=package_name, resource_id=resource_id, record_id=image['record_id']) %}
 					<td><a href="{{ url }}">
 					
-     				             Ver Record
+     				             Ver Record             
+{% link_for _('Next'), controller='ckanext.recordviewer.controller.RVController', action='recordurl' %}
 
      		 			</a></td>	
 					 
