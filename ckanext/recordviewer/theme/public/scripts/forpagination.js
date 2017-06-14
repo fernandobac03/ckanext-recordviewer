@@ -1,5 +1,8 @@
 
 	$(document).ready(function(){		
-		$('#dataTable').tablePaginate({navigateType:'full',recordPerPage:5});
+		$('#dataTable').tablePaginate({
+				navigateType:'navigator',
+				recordPerPage:20
+		});
 	});
 

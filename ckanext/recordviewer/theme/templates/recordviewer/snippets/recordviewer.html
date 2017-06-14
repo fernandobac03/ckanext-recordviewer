@@ -1,13 +1,7 @@
 <div id="recordviewer" data-toggle="modal-recordviewer" data-target="#modal-recordviewer">
 
-
-<h2>Buscar</h2>
-
 <input type="text" id="searchInDataTableInput" onkeyup="searchFunction()" placeholder="Search for all fields.." title="Type in a name">
 							
-
- <div class="row">
-<div id="paginador"></div>
 <table id="dataTable" WIDTH="100%">
 		{% if images[0]['record'] %} 		
 			<tr class="header" WIDTH='10%'"> <!--printing headers-->
@@ -21,7 +15,7 @@
      
  {% for image in images %}
 
-            <div class="recordviewer-image col2 span2">
+            <div class="recordviewer">
 
                 {# Allow passing in descrtipton to ovveride #}
                 {% if not image.description %}
@@ -54,12 +48,8 @@
         {% endfor %}
 
 </table>
-</div>
 
 <script>
-
-
-
 function searchFunction() {
   var input, filter, table, tr, td, i, string, find;
   input = document.getElementById("searchInDataTableInput");
@@ -74,21 +64,15 @@ function searchFunction() {
 		find = true;      
         }
     }
-
        if (find==true) { 
           tr[i].style.display = "";
        } else {
           tr[i].style.display = "none";
        }
-
   }
 }
-
-
 </script>
-
-  </div>
+</div>
 
 {% resource 'ckanext-recordviewer/main' %}
-
 {% include "recordviewer/snippets/lightbox.html" %}
