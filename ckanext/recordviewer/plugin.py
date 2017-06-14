@@ -55,9 +55,19 @@ class RecordviewerPlugin(p.SingletonPlugin):
     """
     Recordviewer plugin
     """
+    p.implements(p.IRoutes,inherit=True)
     p.implements(p.IConfigurer)
     p.implements(p.IResourceView, inherit=True)
     p.implements(IDatastore, inherit=True)
+
+ def before_map(self, map):
+	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.predataset.controller:RVController', action='algo')    
+        return map
+
+    def after_map(self, map):
+	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.predataset.controller:RVController', action='algo')       
+        return map
+
 
     datastore_fields = []
 
