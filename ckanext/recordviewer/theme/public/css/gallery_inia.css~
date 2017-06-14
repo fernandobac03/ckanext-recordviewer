@@ -1,0 +1,58 @@
+
+#searchInDataTableInput {
+  background-image: url('../searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 30%;
+  font-size: 14x;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  float: left;
+}
+
+#dataTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+#dataTable th, #dataTable td {
+  text-align: left;
+  padding: 1px;
+  border: 1px solid #ddd;
+}
+
+#dataTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#dataTable tr.header, #dataTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.paging-nav {
+	  text-align: right;
+	  padding-top: 2px;
+	}
+	 
+.paging-nav a {
+	  margin: auto 1px;
+	  text-decoration: none;
+	  display: inline-block;
+	  padding: 1px 7px;
+	  background: #91b9e6;
+	  color: white;
+	  border-radius: 3px;
+
+	}
+	 
+.paging-nav .selected-page {
+	  background: #187ed5;
+	  font-weight: bold;
+
+	}

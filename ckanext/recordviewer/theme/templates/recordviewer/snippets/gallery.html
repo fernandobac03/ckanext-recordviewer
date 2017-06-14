@@ -1,0 +1,94 @@
+<div id="recordviewer" data-toggle="modal-recordviewer" data-target="#modal-recordviewer">
+
+
+<h2>Buscar</h2>
+
+<input type="text" id="searchInDataTableInput" onkeyup="searchFunction()" placeholder="Search for all fields.." title="Type in a name">
+							
+
+ <div class="row">
+<div id="paginador"></div>
+<table id="dataTable" WIDTH="100%">
+		{% if images[0]['record'] %} 		
+			<tr class="header" WIDTH='10%'"> <!--printing headers-->
+				{% for field in images[0]['record'] %}			
+		         		<th> {{ field }} </th> 
+				{% endfor %}
+			</tr>
+		{% else %}
+			<p> No data in images[0]['record'] </p> 
+		{% endif %} 
+     
+ {% for image in images %}
+
+            <div class="recordviewer-image col2 span2">
+
+                {# Allow passing in descrtipton to ovveride #}
+                {% if not image.description %}
+
+                    {# Check we have package_name and resource_id - these are set up in template variables
+                    for the main gallery view, but this snippet can be used elsewhere #}
+                    {% if package_name and resource_id %}
+                        {% set url = h.url_for(controller='ckanext.nhm.controllers.record:RecordController', action='view', package_name=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+                        {#% set description = "<a href='%s'>View</a>" % url %#}               
+		    {% endif %}
+                {% else %}
+                    {% set description = image.description %}
+                {%  endif %}
+	
+		<tr>
+				{% for field in image['record'] %}			 
+					{% set value = image['record'][field] %}
+					{% if 'http' in value|string() %}
+					<td><a href="{{ image.url }}">
+     				             Ver Record
+     		 			</a></td>	
+					 
+					{% else %}
+						<td> {{ value }} </td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+		
+            </div>
+        {% endfor %}
+
+</table>
+</div>
+
+<script>
+
+
+
+function searchFunction() {
+  var input, filter, table, tr, td, i, string, find;
+  input = document.getElementById("searchInDataTableInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) { 
+    td = tr[i].getElementsByTagName("td");
+    find = false;
+    for (j = 0; j < td.length; j++) { 
+       if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+		find = true;      
+        }
+    }
+
+       if (find==true) { 
+          tr[i].style.display = "";
+       } else {
+          tr[i].style.display = "none";
+       }
+
+  }
+}
+
+
+</script>
+
+  </div>
+
+{% resource 'ckanext-recordviewer/main' %}
+
+{% include "recordviewer/snippets/lightbox.html" %}
