@@ -13,12 +13,8 @@
 
 #dataTable {
   border-collapse: collapse;
-  width: 100%;
   border: 1px solid #ddd;
   font-size: 12px;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow: ellipsis;
 }
 
 #dataTable th, #dataTable td {
@@ -52,5 +48,5 @@
 
 .scrollit {
     overflow:scroll;
-    height:100px;
+    height:300px;
 }

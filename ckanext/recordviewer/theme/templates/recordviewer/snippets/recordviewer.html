@@ -30,8 +30,8 @@
                 {% else %}
                     {% set description = image.description %}
                 {%  endif %}
-	
-		<tr>
+		<tbody>
+		       <tr>
 				{% for field in image['record'] %}			 
 					{% set value = image['record'][field] %}
 					{% if 'http' in value|string() %}
@@ -44,7 +44,7 @@
 					{% endif %}
 				{% endfor %}
 			</tr>
-		
+		</tbody>
             </div>
         {% endfor %}
 
