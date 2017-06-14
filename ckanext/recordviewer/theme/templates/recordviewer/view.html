@@ -3,7 +3,7 @@
 {% block page %}
 
     {% if images %}
-        {% snippet 'gallery/snippets/recordviewer.html', images=images, package_name=package_name, resource_id=resource_id %}
+        {% snippet 'recordviewer/snippets/recordviewer.html', images=images, package_name=package_name, resource_id=resource_id %}
         {{ page.pager() }}
     {% else %}
         <div class="row">
