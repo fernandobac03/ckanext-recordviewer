@@ -252,7 +252,7 @@ class RVController(BaseController):
 #            print("!!!!!!!!!!!!!!!!!!1 POsted FROM EXTENSION!!!!!!!!!!!1")    
 #            variable = request.params.get('sel')
         
-#	c.link = str("/dataset/dictionary/new_dict/"+"prueba")
+	c.link = str("dataset/"+package_name+"/resource/"+resource_id+"/record/"+record_id)
 #	return render("package/new_data_dict.html",extra_vars={'package_id':variable})
 	return render("record/view_record.html")
 
