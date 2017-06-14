@@ -5,9 +5,9 @@
   background-repeat: no-repeat;
   width: 30%;
   font-size: 14x;
-  padding: 12px 20px 12px 40px;
+  padding: 6px 10px 6px 20px;
   border: 1px solid #ddd;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   float: left;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .pagination-btn{
-	float: left;
+	float: right;
 	color: #333;
 	font-size:14px;
 	line-height:24px;
@@ -48,4 +48,9 @@
 	padding:  0 7px;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 	
+}
+
+.scrollit {
+    overflow:scroll;
+    height:100px;
 }
