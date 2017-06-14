@@ -256,6 +256,7 @@ class RVController(BaseController):
 #	return render("package/new_data_dict.html",extra_vars={'package_id':variable})
 	return render("record/view_record.html")
 
+
 ################################################################
  
  
@@ -279,7 +280,7 @@ class RVController(BaseController):
 
 	#return view_cls.render_record(c)
 	return "dataset/"+package_name+"/resource/"+resource_id+"/record/"+record_id
-
+        #self.algo(self, data=None, errors=None)
 
  def _load_data(self, package_name, resource_id, record_id):
         """
