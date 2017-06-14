@@ -61,11 +61,11 @@ class RecordviewerPlugin(p.SingletonPlugin):
     p.implements(IDatastore, inherit=True)
 
     def before_map(self, map):
-	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller.RVController', action='algo')    
+	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='algo')    
         return map
 
     def after_map(self, map):
-	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller.RVController', action='algo')       
+	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='algo')       
         return map
 
 
