@@ -60,7 +60,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
     p.implements(p.IResourceView, inherit=True)
     p.implements(IDatastore, inherit=True)
 
- def before_map(self, map):
+    def before_map(self, map):
 	map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.predataset.controller:RVController', action='algo')    
         return map
 
