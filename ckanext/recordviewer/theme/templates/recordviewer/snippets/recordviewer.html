@@ -37,6 +37,7 @@
 					{% if 'http' in value|string() %}
  {% set url = h.url_for(controller='ckanext.recordviewer.controller.RVController', action='recordurl', package_name=package_name, resource_id=resource_id, record_id=image['record_id']) %}
 					<td><a href="{{ url }}">
+					
      				             Ver Record
 
      		 			</a></td>	

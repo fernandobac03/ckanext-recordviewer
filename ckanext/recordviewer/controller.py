@@ -278,7 +278,7 @@ class RVController(BaseController):
         #view_cls = resource_view_get_view(c.resource)
 
 	#return view_cls.render_record(c)
-	return render("dataset/"+package_name+"/resource/"+resource_id+"/record/"+record_id")
+	return "dataset/"+package_name+"/resource/"+resource_id+"/record/"+record_id
 
 
  def _load_data(self, package_name, resource_id, record_id):
