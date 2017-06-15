@@ -2,10 +2,14 @@
 
 {% block subtitle %}{{ _("Ver Información del Registro") }}{% endblock %}
 
+{% if (data) %}
+   {% for recdata in data %}
+       <p> recdata </p>
+   {% endfor %}
+{% else %}
+      <p> no data</p>
+{% endif %}
 
- {% for recdata in data %}
-   <p> recdata </p>
- {% endfor %}
 
 <table>
 <tbody>
