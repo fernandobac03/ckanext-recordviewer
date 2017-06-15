@@ -1,10 +1,21 @@
-<div>
+{% extends "package/base.html" %}
 
-<input type="text" id="searchInDataTableInput" onkeyup="searchFunction()" placeholder="Search for all fields.." title="Type in a name">
+{% block subtitle %}{{ _("Ver Información del Registro") }}{% endblock %}
 
 
+ {% for recdata in data %}
+   <p> recdata </p>
+ {% endfor %}
 
-</div>
+<table>
+<tbody>
+
+</tbody>
+
+
+</table>
+
+
 
 {% resource 'ckanext-recordviewer/main' %}
-{% include "recordviewer/snippets/lightbox.html" %}
+
