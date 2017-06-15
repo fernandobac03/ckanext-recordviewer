@@ -35,12 +35,14 @@
 				{% for field in image['record'] %}			 
 					{% set value = image['record'][field] %}
 					{% if 'http' in value|string() %}
- {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='algo', package_name=package_name, resource_id=resource_id, record_id=image['record_id']) %}
-					<td><a href="{{ url }}">
-					     {% link_for _('View'), controller='ckanext.recordviewer.controller:RVController', action='algo', class_='btn btn-primary', icon='plus-square' %}
-     				             Ver Record             
-
-     		 			</a></td>	
+ {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='algo', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+					<td>
+						<a href="{{ url }}">Ver Record </a>
+					    <!-- {% link_for _('View'), controller='ckanext.recordviewer.controller:RVController', action='algo', class_='btn btn-primary', icon='plus-square' %}-->
+{% block record_block %}
+{{ h.link_to("View", h.url_for(controller='ckanext.recordviewer.controller:RVController', action='algo', id=package.name, resource_id=resource_id, record_id=image['record_id'])) }}
+{% endblock %}
+</td>	
 					 
 					{% else %}
 						<td> {{ value }} </td>
