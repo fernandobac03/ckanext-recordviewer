@@ -261,8 +261,8 @@ class RVController(BaseController):
 	return render("package/new_data_dict.html")
 
 
-
-    def algo(self, id, resource_id, record_id, data=None, errors=None,
+#id, resource_id, record_id, 
+    def algo(self, data=None, errors=None,
                       error_summary=None):
 
  	from ckan.lib.search import SearchError, SearchQueryError
