@@ -250,19 +250,19 @@ class RVController(BaseController):
 
         page_params = {
             'collection':records,
-            'page': current_page,
-            'url': self.pager_url,
-            'items_per_page': records_per_page,
+            #'page': current_page,
+            #'url': self.pager_url,
+            #'items_per_page': records_per_page,
             'item_count': item_count,
         }
 
-        # Add filter params to page links
-        for key in ['q', 'filters']:
-            value = request.params.get(key)
-            if value:
-                page_params[key] = value
+        ## Add filter params to page links
+        #for key in ['q', 'filters']:
+        #    value = request.params.get(key)
+        #    if value:
+        #        page_params[key] = value
 
-        page = h.Page(**page_params)
+        #page = h.Page(**page_params)
 
         #return {
         #    'images': image_list,
