@@ -471,7 +471,7 @@ class RVController(BaseController):
         if request.method == 'POST' and not data:
             #data = data or \
                # clean_dict(dict_fns.unflatten(tuplize_dict(parse_params(
-                                                           request.POST))))
+           #                                                request.POST))))
             ## we don't want to include save as it is part of the form
             del data['save']
 
