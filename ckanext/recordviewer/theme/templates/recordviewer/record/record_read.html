@@ -2,13 +2,22 @@
 
 {% block subtitle %}{{ _("Ver Información del Registro") }}{% endblock %}
 
+
+{% block breadcrumb_content_selected %}{% endblock %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+
 {% if (data) %}
    {% for recdata in data %}
-       <p> recdata </p>
+       <p> {{ recdata }} </p>
    {% endfor %}
 {% else %}
       <p> no data</p>
 {% endif %}
+{% endblock %}
+
+
 
 
 <table>
