@@ -463,7 +463,7 @@ class RVController(BaseController):
 
 #######################################################################
 
- def recordurl(self, package_name, resource_id, record_id):
+    def recordurl(self, package_name, resource_id, record_id):
 
         """
         View an individual record
@@ -480,7 +480,7 @@ class RVController(BaseController):
 	return "dataset/"+package_name+"/resource/"+resource_id+"/record/"+record_id
         #self.algo(self, data=None, errors=None)
 
- def _load_data(self, package_name, resource_id, record_id):
+    def _load_data(self, package_name, resource_id, record_id):
         """
         Load the data for dataset, resource and record (into C var)
         @param package_name:
