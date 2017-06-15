@@ -262,7 +262,7 @@ class RVController(BaseController):
 
 
 
-    def algo(self, data=None, errors=None):
+    def algo(self, id, resource_id, record_id):
 
  	from ckan.lib.search import SearchError, SearchQueryError
         package_type = 'dataset' #only for dataset type 'dataset'
