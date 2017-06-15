@@ -517,7 +517,7 @@ class RVController(BaseController):
       #                                                  {'id': resource_id})
         except NotFound:
             abort(404, _('Resource not found'))
-        c.pkg_dict = pkg_dict
+        #c.pkg_dict = pkg_dict
         c.resource = resource_dict
         # set the form action
         c.form_action = h.url_for(controller='package',
