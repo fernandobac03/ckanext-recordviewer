@@ -527,8 +527,8 @@ class RVController(BaseController):
         if not data:
             data = resource_dict
 
-        package_type = pkg_dict['type'] or 'dataset'
-
+        #package_type = pkg_dict['type'] or 'dataset'
+	package_type = 'dataset' # agregado por mi
         errors = errors or {}
         error_summary = error_summary or {}
         vars = {'data': data, 'errors': errors,
