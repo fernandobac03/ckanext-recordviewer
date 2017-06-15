@@ -176,7 +176,6 @@ class RVController(BaseController):
             # So add filters to the datastore search params
             params = {
                 'resource_id': resource_id,
-                'resource_id': record_id,
                 'limit': records_per_page,
                 'offset': offset,
                 #'filters': {
@@ -203,11 +202,6 @@ class RVController(BaseController):
             context = {'model': model, 'session': model.Session, 'user': c.user or c.author}
             data = toolkit.get_action('datastore_search')(context, params)
 
-        return {
-            'recordinf': data,
-            'resource_id': resource_id,
-            'record_id': record_id
-        }
 
             item_count = data.get('total', 0)
             records = data['records']
@@ -244,14 +238,14 @@ class RVController(BaseController):
                                 if thumbnail_params:
                                     q = '&' if '?' in thumbnail else '?'
                                     thumbnail += q + thumbnail_params
-
-                            image_list.append({
-                                'url': image,
-                                'thumbnail': thumbnail,
-                                'gallery_title': gallery_title,
-                                'modal_title': modal_title,
-                                'record_id': record['_id']
-                            })
+                            if (record_id==record['_id']):
+                                image_list.append({
+                                    'url': image,
+                                    'thumbnail': thumbnail,
+                                    'gallery_title': gallery_title,
+                                    'modal_title': modal_title,
+                                    'record_id': record['_id']
+                                })
 
         page_params = {
             'collection':records,
@@ -269,14 +263,19 @@ class RVController(BaseController):
 
         page = h.Page(**page_params)
 
+        #return {
+        #    'images': image_list,
+        #    'datastore_fields':  self.datastore_fields,
+        #    'defaults': {},
+        #    'resource_id': data_dict['resource']['id'],
+        #    'package_name': data_dict['package']['name'],
+        #    'page': page
+        #}
+
+
         return {
-            'images': image_list,
-            'datastore_fields':  self.datastore_fields,
-            'defaults': {},
-            'resource_id': data_dict['resource']['id'],
-            'package_name': data_dict['package']['name'],
-            'page': page
+            'recordinf': image_list,
+            'resource_id': resource_id,
+            'record_id': record_id
         }
-
-
 
