@@ -484,7 +484,7 @@ class RVController(BaseController):
                 if resource_id:
                     data['id'] = resource_id
               #      get_action('resource_update')(context, data)
-                else:
+             #   else:
              #       get_action('resource_create')(context, data)
             except ValidationError, e:
                 errors = e.error_dict
