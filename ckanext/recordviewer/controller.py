@@ -507,8 +507,8 @@ class RVController(BaseController):
            # fields = ['url', 'resource_type', 'format', 'name', 'description',
             #          'id']
           #  data = {}
-            for field in fields:
-                data[field] = resource_dict[field]
+             #for field in fields:
+             #   data[field] = resource_dict[field]
         #    return self.new_resource(id, data=data)
         ## resource is fully created
         try:
