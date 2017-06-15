@@ -535,7 +535,7 @@ class RVController(BaseController):
                 'error_summary': error_summary, 'action': 'edit',
      #           'resource_form_snippet': self._resource_form(package_type),
                 'dataset_type': package_type}
-        return render('record/view_record.html', extra_vars=vars)
+        return render('recordviewer/record/view_record.html', extra_vars=vars)
 
 
 
