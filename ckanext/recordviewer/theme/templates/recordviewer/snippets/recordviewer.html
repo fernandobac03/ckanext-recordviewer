@@ -42,6 +42,7 @@
 
 {{ h.link_to("View", h.url_for(controller='ckanext.recordviewer.controller:RVController', action='algo', id=package_name, resource_id=resource_id, record_id=image['record_id'])) }}
 
+{{ h.link_to("view read dataset", h.url_for(controller='package', action='read', id=package_name)) }}
 </td>	
 					 
 					{% else %}
