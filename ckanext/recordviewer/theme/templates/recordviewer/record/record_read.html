@@ -7,18 +7,38 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
+{% endblock %}
+
+{% block primary_content %}
+  {% block resource_additional_information %}
+   
 
 {% if (data) %}
-   {% for recdata in data %}
-       <p> {{ recdata }} </p>
+   {% for recdata in data['recordinf']['record'] %}
+
+
+				{% for field in recdata %}			 
+					{% set value = recdata[field] %}
+					{% if 'http' in value|string() %}
+ {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+					<li>
+						<a href="{{ url }}">Ver Record </a>
+					</li>						 
+					{% else %}
+						<li> {{ value }} </li>
+					{% endif %}
+				{% endfor %}
+
    {% endfor %}
+
+
+
 {% else %}
       <p> no data</p>
 {% endif %}
+  {% endblock %}
+
 {% endblock %}
-
-
-
 
 <table>
 <tbody>
