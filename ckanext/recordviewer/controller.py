@@ -170,14 +170,14 @@ class RVController(BaseController):
         # Only try and load images, if an image field has been selected
         if record_id:
 
-            offset = (int(current_page) - 1) * records_per_page
+         #   offset = (int(current_page) - 1) * records_per_page
 
             # We only want to get records that have both the image field populated
             # So add filters to the datastore search params
             params = {
                 'resource_id': resource_id,
-                'limit': records_per_page,
-                'offset': offset,
+           #     'limit': records_per_page,
+          #      'offset': offset,
                 #'filters': {
                 #    image_field: IS_NOT_NULL
                 #}
