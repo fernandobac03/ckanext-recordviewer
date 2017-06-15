@@ -62,12 +62,12 @@ class RecordviewerPlugin(p.SingletonPlugin):
 
     def before_map(self, map):
 	#map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='algo')    
-        map.connect('View Record', '/dataset/{id}/resourcee/{resource_id}',controller='ckanext.recordviewer.controller:RVController', action='resource_edit')    
+        map.connect('View Record', '/dataset/{id}/resourcee/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='resource_edit')    
               
         return map
 
     def after_map(self, map):
-        map.connect('View Record', '/dataset/{id}/resourcee/{resource_id}',controller='ckanext.recordviewer.controller:RVController', action='resource_edit')    
+        map.connect('View Record', '/dataset/{id}/resourcee/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='resource_edit')    
         return map
 
 
