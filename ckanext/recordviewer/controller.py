@@ -163,9 +163,9 @@ class RVController(BaseController):
         #thumbnail_params = data_dict['resource_view'].get('thumbnail_params', None)
         #thumbnail_field = data_dict['resource_view'].get('thumbnail_field', None)
 
-        #image_list = []
-        #records = []
-        #item_count = 0
+        image_list = []
+        records = []
+        item_count = 0
 
         # Only try and load images, if an image field has been selected
         if record_id:
