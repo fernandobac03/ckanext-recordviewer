@@ -465,7 +465,7 @@ class RVController(BaseController):
 #######################################################################
 
 
-    def resource_edit(self, id, resource_id, record_id, data=None, errors=None,
+    def record_read(self, id, resource_id, record_id, data=None, errors=None,
                       error_summary=None):
 
         if request.method == 'POST' and not data:

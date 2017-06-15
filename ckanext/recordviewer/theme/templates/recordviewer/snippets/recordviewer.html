@@ -35,12 +35,10 @@
 				{% for field in image['record'] %}			 
 					{% set value = image['record'][field] %}
 					{% if 'http' in value|string() %}
- {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='resource_edit', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+ {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
 					<td>
 						<a href="{{ url }}">Ver Record </a>
-{% link_for _('Manage'), controller='ckanext.recordviewer.controller:RVController', action='resource_edit', id=package_name, resource_id=resource_id, record_id=image['record_id'], class_='btn', icon='wrench' %}
-</td>	
-					 
+					</td>						 
 					{% else %}
 						<td> {{ value }} </td>
 					{% endif %}
