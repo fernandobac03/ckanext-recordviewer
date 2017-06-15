@@ -17,8 +17,8 @@ import ckan.model as model
 import ckan.lib.datapreview as datapreview
 import ckan.lib.plugins
 import ckan.lib.uploader as uploader
-import ckan.plugins as p
 import ckan.lib.render
+import ckan.plugins.toolkit as toolkit
 
 from ckan.common import config
 import ckan.controllers.package as pkgcontroller
@@ -208,44 +208,45 @@ class RVController(BaseController):
 
             for record in data['records']:
 
-                try:
-                    images = record.get(image_field, None).split(field_separator)
-                except AttributeError:
-                    pass
-                else:
-                    # Only add if we have an image
-                    if images:
+                #try:
+                #    images = record.get(image_field, None).split(field_separator)
+                #except AttributeError:
+                #    pass
+                #else:
+                #    # Only add if we have an image
+                #    if images:
 
-                        gallery_title = record.get(gallery_title_field, None)
-                        modal_title = record.get(modal_title_field, None)
-                        thumbnails = record.get(thumbnail_field, None).split(field_separator)
+                #        gallery_title = record.get(gallery_title_field, None)
+                #        modal_title = record.get(modal_title_field, None)
+                #        thumbnails = record.get(thumbnail_field, None).split(field_separator)
 
-                        for i, image in enumerate(images):
+                #        for i, image in enumerate(images):
 
-                            image = image.strip()
+                 #           image = image.strip()
 
-                            if thumbnails:
-                                try:
-                                    thumbnail = thumbnails[i]
-                                except IndexError:
-                                    # If we don't have a thumbnail with the same index
-                                    # Use the first thumbnail image
-                                    thumbnail = thumbnails[0]
+                 #           if thumbnails:
+                 #               try:
+                #                    thumbnail = thumbnails[i]
+                #                except IndexError:
+                 #                   # If we don't have a thumbnail with the same index
+                 #                   # Use the first thumbnail image
+                 #                   thumbnail = thumbnails[0]
 
-                                thumbnail = thumbnail.strip()
+                 #               thumbnail = thumbnail.strip()
 
-                                # If we have thumbnail params, add them here
-                                if thumbnail_params:
-                                    q = '&' if '?' in thumbnail else '?'
-                                    thumbnail += q + thumbnail_params
+                 #               # If we have thumbnail params, add them here
+                 #               if thumbnail_params:
+                 #                   q = '&' if '?' in thumbnail else '?'
+                 #                   thumbnail += q + thumbnail_params
                             if (record_id==record['_id']):
                                 image_list.append({
                                     'url': image,
                                     'thumbnail': thumbnail,
                                     'gallery_title': gallery_title,
                                     'modal_title': modal_title,
-                                    'record_id': record['_id']
-                                })
+                                    'record_id': record['_id'],
+                                    'record': record
+                            })
 
         page_params = {
             'collection':records,
