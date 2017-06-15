@@ -7,18 +7,31 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
+ <p> Probando en BreadCrumb Content</p>
 {% endblock %}
+
+
+{% block pre_primary %}
+	<p>texto en block pre_primary</p>
+{% endblock %}
+
 
 {% block primary_content %}
   {% block resource_additional_information %}
-   
+   <table>
+<tbody>
 
-{% if (data) %}
-   {% for recdata in data['recordinf']['record'] %}
+</tbody>
 
 
-				{% for field in recdata %}			 
-					{% set value = recdata[field] %}
+</table>
+
+{% if data['recordinf'] %}
+   {% for recdata in data['recordinf'] %}
+
+
+				{% for field in recdata['record'] %}			 
+					{% set value = recdata['record'][field] %}
 					{% if 'http' in value|string() %}
  {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
 					<li>
@@ -34,19 +47,13 @@
 
 
 {% else %}
-      <p> no data</p>
+      <p> no data['recordinf']['record']</p>
 {% endif %}
   {% endblock %}
 
 {% endblock %}
 
-<table>
-<tbody>
 
-</tbody>
-
-
-</table>
 
 
 
