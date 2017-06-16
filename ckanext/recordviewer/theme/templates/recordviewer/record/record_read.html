@@ -31,11 +31,14 @@
 {% for recdata in data %}
 	<p>{{ recdata }}</p>
 
-	{% if recdata['recordinf'] %}
-		<p> {{ recdata['recordinf'] }} </p>
-	{% else %}	
-		<p> No data in recdata['recordinf'] </p>
-	{% endif %}
+	{% for recddd in recdata %}
+
+		{% if recddd %}
+			<p> {{ recddd }} </p>
+		{% else %}	
+			<p> No data in recddd </p>
+		{% endif %}
+	{% endfor %}
 
 
 {% endfor %}
