@@ -2,12 +2,12 @@
 
 {% block page %}
 
-    {% if images %}
-        {% snippet 'recordviewer/snippets/recordviewer.html', images=images, package_name=package_name, resource_id=resource_id %}
+   <!-- {% if images %} -->
+        {% snippet 'recordviewer/snippets/recordviewer.html', package_name=package_name, resource_id=resource_id %}
         {{ page.pager() }}
-    {% else %}
+   <!-- {% else %}  
         <div class="row">
             <p>No images found matching these criteria.</p>
         </div>
-    {% endif %}
+    {% endif %}  -->
 {% endblock %}
