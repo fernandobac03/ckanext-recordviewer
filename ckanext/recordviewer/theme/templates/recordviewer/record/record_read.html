@@ -28,13 +28,6 @@
 
 {% if data['recordinf'] %}
    
-{% for recdata in data['recordinf'] %}
-	<p>{{ recdata }}</p>
-
-	
-{% endfor %}
-
-
 
 {% for recdata in data['recordinf'] %}
 
@@ -42,13 +35,13 @@
 				{% for field in recdata['record'] %}			 
 					{% set value = recdata['record'][field] %}
 					{% if 'http' in value|string() %}
- {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
-					<li>
-						<a href="{{ url }}">Ver Record </a>
-					</li>						 
+ 						<li>
+							<a href="{{ url }}">Ver Record </a>
+						</li>						 
 					{% else %}
 						<li> {{ value }} </li>
 					{% endif %}
+						<br></br>
 				{% endfor %}
 
    {% endfor %}
