@@ -160,8 +160,9 @@ class RecordviewerPlugin(p.SingletonPlugin):
         records = []
         item_count = 0
 
-        # Only try and load images, if an image field has been selected
-        if image_field:
+        # for future condition to query data, (for example, if a new field will be mandatory)
+	dummyif = true        
+	if dummyif:
 
             offset = (int(current_page) - 1) * records_per_page
 

@@ -6,6 +6,7 @@
 <table id="dataTable" WIDTH="100%">
 		{% if records[0]['record'] %} 		
 			<tr class="header" WIDTH='10%'"> <!--printing headers-->
+					<th> </th>				
 				{% for field in records[0]['record'] %}			
 		         		<th> {{ field }} </th> 
 				{% endfor %}
@@ -32,12 +33,16 @@
                 {%  endif %}
 		<tbody>
 		       <tr>
+ 				{% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=record['record_id']) %}
+				<td>
+					<a href="{{ url }}">View</a>
+				</td>						 
+				
 				{% for field in record['record'] %}			 
 					{% set value = record['record'][field] %}
 					{% if 'http' in value|string() %}
- {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=record['record_id']) %}
 					<td>
-						<a href="{{ url }}">Ver Record </a>
+						<a href="">Preview </a>
 					</td>						 
 					{% else %}
 						<td> {{ value }} </td>
