@@ -161,7 +161,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
         item_count = 0
 
         # for future condition to query data, (for example, if a new field will be mandatory)
-	dummyif = true        
+	dummyif = True        
 	if dummyif:
 
             offset = (int(current_page) - 1) * records_per_page
