@@ -179,9 +179,9 @@ class RVController(BaseController):
                 'resource_id': resource_id,
            #     'limit': records_per_page,
           #      'offset': offset,
-                #'filters': {
-                #    image_field: IS_NOT_NULL
-                #}
+                'filters': {
+                    '_id': record_id
+                }
             }
 
             ## Add filters from request
@@ -203,7 +203,7 @@ class RVController(BaseController):
 	 #   if fulltext:
          #       params['q'] = fulltext
 	 
-            params['filters']['_id'] = record_id
+            #params['filters']['_id'] = record_id
             context = {'model': model, 'session': model.Session, 'user': c.user or c.author}
             data = toolkit.get_action('datastore_search')(context, params)
 
