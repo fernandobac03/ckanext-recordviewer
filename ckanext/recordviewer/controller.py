@@ -213,12 +213,12 @@ class RVController(BaseController):
 
             for record in data['records']:
 
-                #try:
-                     images = record.get(image_field, None).split(field_separator)
-                #except AttributeError:
-                #    pass
-                #else:
-                #    # Only add if we have an image
+                try:
+                    images = record.get(image_field, None).split(field_separator)
+                except AttributeError:
+                    pass
+                else:
+                     # Only add if we have an image
                     if images:
 
                 #        gallery_title = record.get(gallery_title_field, None)
