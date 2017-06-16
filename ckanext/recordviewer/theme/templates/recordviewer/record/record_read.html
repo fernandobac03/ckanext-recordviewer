@@ -29,10 +29,10 @@
 {% if data %}
    
 {% for recdata in data %}
-	<p>{{ recdata> }}</p>
+	<p>{{ recdata }}</p>
 
 	{% if recdata[recordinf] %}
-		<p> {{ recdata>[recordinf] }} </p>
+		<p> {{ recdata[recordinf] }} </p>
 	{% else %}	
 		<p> No data in recdata[recordinf] </p>
 	{% endif %}
