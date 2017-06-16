@@ -166,6 +166,7 @@ class RVController(BaseController):
         image_list = []
         records = []
         item_count = 0
+	
 
         # Only try and load images, if an image field has been selected
         if record_id:
@@ -195,8 +196,11 @@ class RVController(BaseController):
  #                       pass
 
             # Full text filter
-            fulltext = request.params.get('q')
-            if fulltext:
+#            fulltext = request.params.get('q')
+	    fulltext = {
+		'_id': record_id
+	    }	        
+	    if fulltext:
                 params['q'] = fulltext
 
             context = {'model': model, 'session': model.Session, 'user': c.user or c.author}
