@@ -26,7 +26,7 @@
 
 </table>
 
-{% if data['recordinf'] %}
+{% if data.recordinf %}
    {% for recdata in data['recordinf'] %}
 
 
@@ -47,7 +47,7 @@
 
 
 {% else %}
-      <p> no data['recordinf']['record']</p>
+      <p> no data.recordinf</p>
 {% endif %}
   {% endblock %}
 
