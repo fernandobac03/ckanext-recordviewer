@@ -149,14 +149,14 @@ class RecordviewerPlugin(p.SingletonPlugin):
 
         current_page = request.params.get('page', 1)
 
-        image_field = data_dict['resource_view'].get('image_field')
-        gallery_title_field = data_dict['resource_view'].get('gallery_title_field', None)
-        modal_title_field = data_dict['resource_view'].get('modal_title_field', None)
+        record_field = data_dict['resource_view'].get('record_field')
+        #gallery_title_field = data_dict['resource_view'].get('gallery_title_field', None)
+        #modal_title_field = data_dict['resource_view'].get('modal_title_field', None)
 
-        thumbnail_params = data_dict['resource_view'].get('thumbnail_params', None)
-        thumbnail_field = data_dict['resource_view'].get('thumbnail_field', None)
+        #thumbnail_params = data_dict['resource_view'].get('thumbnail_params', None)
+        #thumbnail_field = data_dict['resource_view'].get('thumbnail_field', None)
 
-        image_list = []
+        records_list = []
         records = []
         item_count = 0
 
@@ -171,9 +171,6 @@ class RecordviewerPlugin(p.SingletonPlugin):
                 'resource_id': data_dict['resource']['id'],
                 'limit': records_per_page,
                 'offset': offset,
-                'filters': {
-                    image_field: IS_NOT_NULL
-                }
             }
 
             # Add filters from request
@@ -202,49 +199,13 @@ class RecordviewerPlugin(p.SingletonPlugin):
 #POR AQUI REVISAR, CREO QUE SE ESTAN RECUPERANDO TODOS LOS DATOS, (tODOS LOS OTROS CAMPOS)
 #VERIFICAR PARA QUE ESOS DATOS TAMBIEN VAYAN AL FRONTEND
 
-            for record in data['records']:
-
-                try:
-                    images = record.get(image_field, None).split(field_separator)
-                except AttributeError:
-                    pass
-                else:
-                    # Only add if we have an image
-                    if images:
-
-                        gallery_title = record.get(gallery_title_field, None)
-                        modal_title = record.get(modal_title_field, None)
-                        thumbnails = record.get(thumbnail_field, None).split(field_separator)
-
-                        for i, image in enumerate(images):
-
-                            image = image.strip()
-
-                            if thumbnails:
-                                try:
-                                    thumbnail = thumbnails[i]
-                                except IndexError:
-                                    # If we don't have a thumbnail with the same index
-                                    # Use the first thumbnail image
-                                    thumbnail = thumbnails[0]
-
-                                thumbnail = thumbnail.strip()
-
-                                # If we have thumbnail params, add them here
-                                if thumbnail_params:
-                                    q = '&' if '?' in thumbnail else '?'
-                                    thumbnail += q + thumbnail_params
-				
-				#json.dumps(record)
-                            image_list.append({
-                                'url': image,
-                                'thumbnail': thumbnail,
-                                'gallery_title': gallery_title,
-                                'modal_title': modal_title,
-                                'record_id': record['_id'],
-				'record': record,
-#				'record': [{'value': r[0], 'text': r[1]} for r in record],
-                            })
+            for record in data['records']:  
+                record_title = record.get(record_field, None)
+                records_list.append({
+                       'record_title': record_title,
+                       'record_id': record['_id'],
+		       'record': record,
+                })
 
         page_params = {
             'collection':records,
@@ -263,7 +224,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
         page = h.Page(**page_params)
 
         return {
-            'images': image_list,
+            'records': records_list,
             'datastore_fields':  self.datastore_fields,
             'defaults': {},
             'resource_id': data_dict['resource']['id'],

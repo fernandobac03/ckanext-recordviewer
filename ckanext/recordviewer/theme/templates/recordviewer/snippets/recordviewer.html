@@ -4,38 +4,38 @@
 <br></br>
 <div class="scrollit">						
 <table id="dataTable" WIDTH="100%">
-		{% if images[0]['record'] %} 		
+		{% if records[0]['record'] %} 		
 			<tr class="header" WIDTH='10%'"> <!--printing headers-->
-				{% for field in images[0]['record'] %}			
+				{% for field in records[0]['record'] %}			
 		         		<th> {{ field }} </th> 
 				{% endfor %}
 			</tr>
 		{% else %}
-			<p> No data in images[0]['record'] </p> 
+			<p> No data in records[0]['record'] </p> 
 		{% endif %} 
      
- {% for image in images %}
+ {% for record in records %}
 
             <div class="recordviewer">
 
                 {# Allow passing in descrtipton to ovveride #}
-                {% if not image.description %}
+                {% if not record.description %}
 
                     {# Check we have package_name and resource_id - these are set up in template variables
                     for the main gallery view, but this snippet can be used elsewhere #}
                     {% if package_name and resource_id %}
-                        {% set url = h.url_for(controller='ckanext.nhm.controllers.record:RecordController', action='view', package_name=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+                        {% set url = h.url_for(controller='ckanext.nhm.controllers.record:RecordController', action='view', package_name=package_name, resource_id=resource_id, record_id=record['record_id']) %}
                         {#% set description = "<a href='%s'>View</a>" % url %#}               
 		    {% endif %}
                 {% else %}
-                    {% set description = image.description %}
+                    {% set description = record.description %}
                 {%  endif %}
 		<tbody>
 		       <tr>
-				{% for field in image['record'] %}			 
-					{% set value = image['record'][field] %}
+				{% for field in record['record'] %}			 
+					{% set value = record['record'][field] %}
 					{% if 'http' in value|string() %}
- {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=image['record_id']) %}
+ {% set url = h.url_for(controller='ckanext.recordviewer.controller:RVController', action='record_read', id=package_name, resource_id=resource_id, record_id=record['record_id']) %}
 					<td>
 						<a href="{{ url }}">Ver Record </a>
 					</td>						 

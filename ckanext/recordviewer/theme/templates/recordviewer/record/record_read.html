@@ -12,7 +12,7 @@
 
 
      {% block pre_primary %}
-	<p>Inia - Texto en Pre-Primary/p>
+	<p></p>
           
      {% endblock %}
 
@@ -47,8 +47,8 @@
 					        {% set value = recdata['record'][field] %}
 			                  	{% if 'http' in value|string() %}			
 						      <p><img src="{{ value }}" width="50%"><a href="{{ value }}" target="_blank"></a></img></p>
-						{% endif %}		
-				            {% endfor %}
+						{% endif %}	
+				            {% endfor %}	
 			              {% endfor %}
 				    {% endif %}
                           {% endfor %}
