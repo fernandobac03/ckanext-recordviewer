@@ -86,7 +86,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
             'name': 'recordviewer',
             'title': 'Recorviewer',
             'schema': {
-	        'record_field': [not_empty, in_list(self.list_datastore_fields)],
+	        'record_field': [ignore_empty, in_list(self.list_datastore_fields)],
             },
             'icon': 'picture',
             'iframed': False,
