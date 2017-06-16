@@ -197,12 +197,13 @@ class RVController(BaseController):
 
             # Full text filter
 #            fulltext = request.params.get('q')
-	    fulltext = {
-		'_id': record_id
-	    }	        
-	    if fulltext:
-                params['q'] = fulltext
-
+	    #fulltext = {
+		#'_id': record_id
+	#    }	        
+	 #   if fulltext:
+         #       params['q'] = fulltext
+	 
+            params['filters']['_id'] = record_id
             context = {'model': model, 'session': model.Session, 'user': c.user or c.author}
             data = toolkit.get_action('datastore_search')(context, params)
 
