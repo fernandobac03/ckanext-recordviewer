@@ -50,3 +50,20 @@
     overflow:scroll;
     height:600px;
 }
+
+
+.box{
+    display: none;
+    width: 100%;
+}
+
+a:hover + .box,.box:hover{
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+#img_prim_cont .img {
+	width: 60%;
+	float: center;
+}

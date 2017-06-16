@@ -40,10 +40,10 @@
 				
 				{% for field in record['record'] %}			 
 					{% set value = record['record'][field] %}
-					{% if 'http' in value|string() %}
-					<td>
-						<a href="">Preview </a>
-					</td>						 
+					{% if ( ('http' in value|string() ) and ('http' in value|string()):  							<td>
+							<a href="{{ value }}" target="_blank">Preview</a><div class="box"><iframe 									src="{{ value }}" width = "500px" height = "500px"></iframe></div></a>
+						</td>						 
+					%}
 					{% else %}
 						<td> {{ value }} </td>
 					{% endif %}

@@ -46,7 +46,7 @@
 					    {% for field in recdata['record'] %}			 
 					        {% set value = recdata['record'][field] %}
 			                  	{% if 'http' in value|string() %}			
-						      <p><img src="{{ value }}" width="50%"><a href="{{ value }}" target="_blank"></a></img></p>
+						      <br/><div class="img_prim_cont"><img src="{{ value }}" width="50%"><a href="{{ value }}" target="_blank"></a></img></div>
 						{% endif %}	
 				            {% endfor %}	
 			              {% endfor %}
@@ -57,22 +57,22 @@
                        {% endif %}
       {% endblock %}
      {% endblock %}
-
+<!--
      {% block secondary_content %}
-          <p> Texto en Secondary Content </p> 
+          <p> Imagen </p> 
             {% if data['recordinf'] %}   
                 {% for recdata in data['recordinf'] %}
 		    {% for field in recdata['record'] %}			 
 		        {% set value = recdata['record'][field] %}
                   	{% if 'http' in value|string() %}			
-			      <p><img src="{{ value }}" width="100%"><a href="{{ value }}" target="_blank"></a></img></p>
+			      <div class="img_sec_cont"><img src="{{ value }}"><a href="{{ value }}" target="_blank"></a></img></div>
 			{% endif %}		
 	            {% endfor %}
               {% endfor %}
 	    {% endif %}
 
      {% endblock %}
-
+    -->
 
 {% resource 'ckanext-recordviewer/main' %}
 
