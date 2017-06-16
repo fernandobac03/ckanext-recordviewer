@@ -26,21 +26,12 @@
 
 </table>
 
-{% if data %}
+{% if data['recordinf'] %}
    
-{% for recdata in data %}
+{% for recdata in data['recordinf'] %}
 	<p>{{ recdata }}</p>
 
-	{% for recddd in recdata %}
-
-		{% if recddd %}
-			<p> {{ recddd }} </p>
-		{% else %}	
-			<p> No data in recddd </p>
-		{% endif %}
-	{% endfor %}
-
-
+	
 {% endfor %}
 
 
@@ -65,7 +56,7 @@
 
 
 {% else %}
-      <p> no data</p>
+      <p> no data['recordinf']</p>
 {% endif %}
   {% endblock %}
 
