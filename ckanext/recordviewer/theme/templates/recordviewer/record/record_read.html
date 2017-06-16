@@ -18,7 +18,7 @@
 		    {% for field in recdata['record'] %}			 
 		        {% set value = recdata['record'][field] %}
                   	{% if 'http' in value|string() %}			
-			      <p><img src="{{ value }}" width="100%"><a href="{{ value }}" target="_blank"></a></img></p>
+			      <p><img src="{{ value }}" width="20%"><a href="{{ value }}" target="_blank"></a></img></p>
 			{% endif %}		
 	            {% endfor %}
               {% endfor %}
