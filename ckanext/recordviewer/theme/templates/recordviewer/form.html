@@ -1,6 +1,7 @@
 {% import 'macros/form.html' as form %}
 
-{% call form.select('image_field', label=_('Record Title field'), options=datastore_fields, selected=data.record_field, error=errors.record_field) %}
+{% call form.select('record_field', label=_('Record Title field'), options=datastore_fields, selected=data.record_field, error=errors.record_field) %}
   {{ form.info(_('Label to use in the Record View.'), inline=True) }}
 {% endcall %}
+
 

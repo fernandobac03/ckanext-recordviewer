@@ -166,9 +166,9 @@ class RecordviewerPlugin(p.SingletonPlugin):
                 'resource_id': data_dict['resource']['id'],
                 'limit': records_per_page,
                 'offset': offset,
-		'filters': {
-                    record_field: IS_NOT_NULL
-                }
+		#'filters': {
+                #    record_field: IS_NOT_NULL
+                #}
             }
 
             # Add filters from request
