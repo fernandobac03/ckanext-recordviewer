@@ -213,21 +213,21 @@ class RVController(BaseController):
 
             for record in data['records']:
 
-                try:
-                    images = record.get(image_field, None).split(field_separator)
-                except AttributeError:
-                    pass
-                else:
+                #try:
+                 #   images = record.get(image_field, None).split(field_separator)
+                #except AttributeError:
+                #    pass
+                #else:
                      # Only add if we have an image
-                    if images:
+                #    if images:
 
                 #        gallery_title = record.get(gallery_title_field, None)
                 #        modal_title = record.get(modal_title_field, None)
                 #        thumbnails = record.get(thumbnail_field, None).split(field_separator)
 
-                        for i, image in enumerate(images):
+                 #       for i, image in enumerate(images):
 
-                            image = image.strip()
+                 #           image = image.strip()
 
                  #           if thumbnails:
                  #               try:
@@ -244,7 +244,7 @@ class RVController(BaseController):
                  #                   q = '&' if '?' in thumbnail else '?'
                  #                   thumbnail += q + thumbnail_params
                             image_list.append({
-                                'url': image,
+                 #               'url': image,
                             #        'thumbnail': thumbnail,
                             #        'gallery_title': gallery_title,
                             #        'modal_title': modal_title,
