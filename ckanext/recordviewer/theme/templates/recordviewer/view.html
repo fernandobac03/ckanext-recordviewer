@@ -2,8 +2,8 @@
 
 {% block page %}
 
-    {% if data %} 
-        {% snippet 'recordviewer/snippets/recordviewer.html', package_name=package_name, resource_id=resource_id %}
+    {% if records %} 
+        {% snippet 'recordviewer/snippets/recordviewer.html', records=records, package_name=package_name, resource_id=resource_id %}
         {{ page.pager() }}
     {% else %}  
         <div class="row">
