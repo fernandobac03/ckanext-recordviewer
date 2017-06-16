@@ -238,7 +238,8 @@ class RVController(BaseController):
                  #               if thumbnail_params:
                  #                   q = '&' if '?' in thumbnail else '?'
                  #                   thumbnail += q + thumbnail_params
-                            if record_id is record['_id']:
+                                if record_id is record['_id']:
+					record['_id']=222
                                 image_list.append({
                             #        'url': image,
                             #        'thumbnail': thumbnail,
