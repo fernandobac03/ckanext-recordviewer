@@ -60,8 +60,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
     p.implements(p.IResourceView, inherit=True)
     p.implements(IDatastore, inherit=True)
 
-    def before_map(self, map):
-	#map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='algo')    
+    def before_map(self, map): 
         map.connect('View Record', '/dataset/{id}/resource/{resource_id}/record/{record_id}',controller='ckanext.recordviewer.controller:RVController', action='record_read')    
               
         return map
@@ -87,12 +86,7 @@ class RecordviewerPlugin(p.SingletonPlugin):
             'name': 'recordviewer',
             'title': 'Recorviewer',
             'schema': {
-		#'image_field': [not_empty, in_list(self.list_datastore_fields), is_string_field(self.datastore_fields)],
-                'image_field': [not_empty, in_list(self.list_datastore_fields)],
-                'thumbnail_field': [not_empty, in_list(self.list_datastore_fields)],
-                'thumbnail_params': [],
-                'gallery_title_field': [ignore_empty, in_list(self.list_datastore_fields)],
-                'modal_title_field': [ignore_empty, in_list(self.list_datastore_fields)]
+	        'record_field': [not_empty, in_list(self.list_datastore_fields)],
             },
             'icon': 'picture',
             'iframed': False,
