@@ -6,23 +6,14 @@
 {% block breadcrumb_content_selected %}{% endblock %}
 
 {% block breadcrumb_content %}
-  {{ super() }}
+  <!--{{ super() }}-->
  <p> Probando en BreadCrumb Content</p>
 {% endblock %}
 
 
      {% block pre_primary %}
 	<p>Inia - Texto en Pre-Primary/p>
-            {% if data['recordinf'] %}   
-                {% for recdata in data['recordinf'] %}
-		    {% for field in recdata['record'] %}			 
-		        {% set value = recdata['record'][field] %}
-                  	{% if 'http' in value|string() %}			
-			      <p><img src="{{ value }}" width="20%"><a href="{{ value }}" target="_blank"></a></img></p>
-			{% endif %}		
-	            {% endfor %}
-              {% endfor %}
-	    {% endif %}
+          
      {% endblock %}
 
 
@@ -31,6 +22,7 @@
      		<h2>{{ _('Información del Registro') }}</h2>
                        {% if data['recordinf'] %}   
       			  {% for recdata in data['recordinf'] %}
+			    {% set url = "" %}
 		  	    <table class="table table-striped table-bordered table-condensed" data-module="table-toggle-more">
                                {% for field in recdata['record'] %}
 				   <tbody>
@@ -49,6 +41,16 @@
                                {% endfor %}
                             </table>
                             <p><img src="{{ url }}" width="200"><a href="{{ url }}" target="_blank"></a></img></p>
+				 {% if data['recordinf'] %}   
+                			{% for recdata in data['recordinf'] %}
+					    {% for field in recdata['record'] %}			 
+					        {% set value = recdata['record'][field] %}
+			                  	{% if 'http' in value|string() %}			
+						      <p><img src="{{ value }}" width="20%"><a href="{{ value }}" target="_blank"></a></img></p>
+						{% endif %}		
+				            {% endfor %}
+			              {% endfor %}
+				    {% endif %}
                           {% endfor %}
                     {% else %}
                             <p> no data['recordinf']</p>
@@ -56,6 +58,37 @@
       {% endblock %}
      {% endblock %}
 
+     {% block secondary_content %}
+          <p> Texto en Secondary Content </p> 
+            {% if data['recordinf'] %}   
+                {% for recdata in data['recordinf'] %}
+		    {% for field in recdata['record'] %}			 
+		        {% set value = recdata['record'][field] %}
+                  	{% if 'http' in value|string() %}			
+			      <p><img src="{{ value }}" width="20%"><a href="{{ value }}" target="_blank"></a></img></p>
+			{% endif %}		
+	            {% endfor %}
+              {% endfor %}
+	    {% endif %}
+ 	  {% block package_info %}
+    	    {% snippet 'package/snippets/info.html', pkg=pkg %}
+	  {% endblock %}
+	
+	  {% block package_organization %}
+	    {% if pkg.organization %}
+	      {% set org = h.get_organization(pkg.organization.name) %}
+	      {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
+	    {% endif %}
+	  {% endblock %}
+
+	  {% block package_social %}
+ 	   	{% snippet "snippets/social.html" %}
+	  {% endblock %}
+	
+	  {% block package_license %}
+	    {% snippet "snippets/license.html", pkg_dict=pkg %}
+	  {% endblock %}
+     {% endblock %}
 
 
 {% resource 'ckanext-recordviewer/main' %}
