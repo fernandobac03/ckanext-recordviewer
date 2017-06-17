@@ -135,7 +135,7 @@ class RVController(BaseController):
         errors = errors or {}
         error_summary = error_summary or {}
 
-        datarecord= self.getRecordData(resource_id, record_id)
+        datarecord= self.getRecordData(id, resource_id, record_id)
 
         vars = {'data': datarecord, 'errors': errors,
                 'error_summary': error_summary, 'action': 'edit',
