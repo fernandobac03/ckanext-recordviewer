@@ -7,7 +7,7 @@
 
 {% block breadcrumb_content %}
   <!--{{ super() }}-->
- <p> Probando en BreadCrumb Content</p>
+  Visualizando Registro
 {% endblock %}
 
 
@@ -15,11 +15,15 @@
 	<p></p>
           
      {% endblock %}
-
+http://localhost:5000/dataset/mi-dataset-en-organizacion-padre/resource/493d0b47-7455-485a-949d-3aa6519305c8
 
      {% block primary_content %}
       {% block resource_additional_information %}
-     		<h2>{{ _('Información del Registro') }}</h2>
+		{% set url_to_back =  %}
+     		<h2>{{ _('Información del Registro') }}</h2>               
+		<li class="nav-item{{ ' active' if active == resource.id }}">
+                {% link_for h.resource_display_name(resource)|truncate(25), controller='package', action='resource_read', 				id=data['package_id'], resource_id= data['resource_id'], inner_span=true %}
+              	</li>
                        {% if data['recordinf'] %}   
       			  {% for recdata in data['recordinf'] %}
 			    {% set url = "" %}

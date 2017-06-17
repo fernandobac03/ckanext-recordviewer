@@ -146,7 +146,7 @@ class RVController(BaseController):
 
         return render('recordviewer/record/record_read.html', extra_vars=vars)
 
-    def getRecordData(self, resource_id, record_id):
+    def getRecordData(self, id, resource_id, record_id):
         """Setup variables available to templates"""
 
         #self.datastore_fields = self._get_datastore_fields(data_dict['resource']['id'])
@@ -281,6 +281,7 @@ class RVController(BaseController):
         return {
             'recordinf': image_list,
             'resource_id': resource_id,
-            'record_id': record_id
+            'record_id': record_id,
+	    'package_id': id
         }
 
