@@ -19,10 +19,11 @@ http://localhost:5000/dataset/mi-dataset-en-organizacion-padre/resource/493d0b47
 
      {% block primary_content %}
       {% block resource_additional_information %}
-     		<h2>{{ _('Información del Registro') }}</h2>               
-		<li class="nav-item active">
-                {% link_for 'Regresar', controller='package', action='resource_read', id=data['package_id'], resource_id= data['resource_id'], inner_span=true %}
-              	</li>
+	<li>
+                {% link_for 'Regresar', controller='package', action='resource_read', id=data['package_id'], resource_id=data['resource_id'], class_='btn' %}
+              	</li>     		
+		<h2>{{ _('Información del Registro') }}</h2>               
+		
                        {% if data['recordinf'] %}   
       			  {% for recdata in data['recordinf'] %}
 			    {% set url = "" %}
