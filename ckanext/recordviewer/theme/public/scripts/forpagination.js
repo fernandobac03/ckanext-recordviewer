@@ -1,8 +1,8 @@
 
-	$(document).ready(function(){		
-		$('#dataTable').tablePaginate({
-				navigateType:'navigator',
-				recordPerPage:20
-		});
+$(document).ready(function(){		
+	$('#dataTable').tablePaginate({
+			navigateType:'navigator',
+			recordPerPage:20
 	});
+});
 
