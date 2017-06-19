@@ -25,14 +25,9 @@ import ckan.controllers.package as pkgcontroller
 
 
 log = logging.getLogger(__name__)
-
-pkggg = pkgcontroller.PackageController()
-
-
 render = base.render
 abort = base.abort
 redirect = h.redirect_to
-
 
 NotFound = logic.NotFound
 NotAuthorized = logic.NotAuthorized
@@ -63,10 +58,6 @@ class RVController(BaseController):
     def index(self):
 	#print(sys.path)
 	return p.toolkit.render("base1.html")
-    
-    
-
-
 
     def record_read(self, id, resource_id, record_id, data=None, errors=None,
                       error_summary=None):
@@ -139,118 +130,40 @@ class RVController(BaseController):
 
         vars = {'data': datarecord, 'errors': errors,
                 'error_summary': error_summary, 'action': 'edit',
-     #           'resource_form_snippet': self._resource_form(package_type),
                 'dataset_type': package_type}
-
-
 
         return render('recordviewer/record/record_read.html', extra_vars=vars)
 
     def getRecordData(self, id, resource_id, record_id):
         """Setup variables available to templates"""
 
-        #self.datastore_fields = self._get_datastore_fields(data_dict['resource']['id'])
-
-        #field_separator = config.get("ckanext.gallery.field_separator", ';')
-        #records_per_page = config.get("ckanext.gallery.records_per_page", 30)
-
-        #current_page = request.params.get('page', 1)
-
-        #image_field = data_dict['resource_view'].get('image_field')
-        #gallery_title_field = data_dict['resource_view'].get('gallery_title_field', None)
-        #modal_title_field = data_dict['resource_view'].get('modal_title_field', None)
-
-        #thumbnail_params = data_dict['resource_view'].get('thumbnail_params', None)
-        #thumbnail_field = data_dict['resource_view'].get('thumbnail_field', None)
-
-        image_list = []
+        record_list = []
         records = []
         item_count = 0
 	
-
-        # Only try and load images, if an image field has been selected
+        # Only try and load record, if record_id exist
         if record_id:
 
-         #   offset = (int(current_page) - 1) * records_per_page
-
-            # We only want to get records that have both the image field populated
+            # We only want to get records that have record_id as id
             # So add filters to the datastore search params
             params = {
                 'resource_id': resource_id,
-           #     'limit': records_per_page,
-          #      'offset': offset,
                 'filters': {
                     '_id': record_id
                 }
             }
 
-            ## Add filters from request
-            #filter_str = request.params.get('filters')
-            #if filter_str:
-            #    for f in filter_str.split('|'):
-            #        try:
-            #            (name, value) = f.split(':')
-            #            params['filters'][name] = value
-
-#                    except ValueError:
- #                       pass
-
-            # Full text filter
-#            fulltext = request.params.get('q')
-	    #fulltext = {
-		#'_id': record_id
-	#    }	        
-	 #   if fulltext:
-         #       params['q'] = fulltext
-	 
-            #params['filters']['_id'] = record_id
             context = {'model': model, 'session': model.Session, 'user': c.user or c.author}
             data = toolkit.get_action('datastore_search')(context, params)
-
 
             item_count = data.get('total', 0)
             records = data['records']
 
             for record in data['records']:
-
-                #try:
-                 #   images = record.get(image_field, None).split(field_separator)
-                #except AttributeError:
-                #    pass
-                #else:
-                     # Only add if we have an image
-                #    if images:
-
-                #        gallery_title = record.get(gallery_title_field, None)
-                #        modal_title = record.get(modal_title_field, None)
-                #        thumbnails = record.get(thumbnail_field, None).split(field_separator)
-
-                 #       for i, image in enumerate(images):
-
-                 #           image = image.strip()
-
-                 #           if thumbnails:
-                 #               try:
-                #                    thumbnail = thumbnails[i]
-                #                except IndexError:
-                 #                   # If we don't have a thumbnail with the same index
-                 #                   # Use the first thumbnail image
-                 #                   thumbnail = thumbnails[0]
-
-                 #               thumbnail = thumbnail.strip()
-
-                 #               # If we have thumbnail params, add them here
-                 #               if thumbnail_params:
-                 #                   q = '&' if '?' in thumbnail else '?'
-                 #                   thumbnail += q + thumbnail_params
-                            image_list.append({
-                 #               'url': image,
-                            #        'thumbnail': thumbnail,
-                            #        'gallery_title': gallery_title,
-                            #        'modal_title': modal_title,
-                                'record_id': record['_id'],
-                                'record': record
-                            })
+                record_list.append({
+                    'record_id': record['_id'],
+                    'record': record
+                })
 
         page_params = {
             'collection':records,
@@ -259,27 +172,8 @@ class RVController(BaseController):
             #'items_per_page': records_per_page,
             'item_count': item_count,
         }
-
-        ## Add filter params to page links
-        #for key in ['q', 'filters']:
-        #    value = request.params.get(key)
-        #    if value:
-        #        page_params[key] = value
-
-        #page = h.Page(**page_params)
-
-        #return {
-        #    'images': image_list,
-        #    'datastore_fields':  self.datastore_fields,
-        #    'defaults': {},
-        #    'resource_id': data_dict['resource']['id'],
-        #    'package_name': data_dict['package']['name'],
-        #    'page': page
-        #}
-
-
         return {
-            'recordinf': image_list,
+            'recordinf':  record_list,
             'resource_id': resource_id,
             'record_id': record_id,
 	    'package_id': id
