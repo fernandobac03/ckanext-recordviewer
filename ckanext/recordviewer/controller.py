@@ -38,9 +38,7 @@ tuplize_dict = logic.tuplize_dict
 clean_dict = logic.clean_dict
 parse_params = logic.parse_params
 flatten_to_string_key = logic.flatten_to_string_key
-
 lookup_package_plugin = ckan.lib.plugins.lookup_package_plugin
-
 get_action = logic.get_action
 
 
@@ -49,7 +47,6 @@ def _encode_params(params):
             for k, v in params]
 
 class RVController(BaseController):
- 
 
     def _setup_template_variables(self, context, data_dict, package_type=None):
         return lookup_package_plugin(package_type).\
