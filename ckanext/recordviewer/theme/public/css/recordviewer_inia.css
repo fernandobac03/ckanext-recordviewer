@@ -24,7 +24,7 @@
   overflow:hidden; /* Escondemos la parte sobrante */
   white-space:nowrap; /* Indicamos que no realice salto de linea si no cabe en la anchura indicada */
   text-overflow: ellipsis; /* Ponemos los dos puntos */
-  width: 10%;
+ 
 }
 
 #dataTable tr {
